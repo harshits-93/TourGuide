@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -33,17 +32,17 @@ public class Temples_Fragment extends Fragment {
 
 
         final ArrayList<Location> temples = new ArrayList<>();
-
-        temples.add(new Location("Raj Ranchhodji Temple","hjdshfkj fdskjksl", R.drawable.raj_ranchhodji_temple));
-        temples.add(new Location("Rasik Bihari Temple", "hjdshfkj fdskjksl",R.drawable.rasik_bihari_temple));
-        temples.add(new Location("Chamunda Mata Temple","hjdshfkj fdskjksl", R.drawable.chamunda_maa_temple));
-        temples.add(new Location("Kunj Bihari Temple", "hjdshfkj fdskjksl",R.drawable.kunj_bihari_temple));
-        temples.add(new Location("Siddheshwar Mahadev Temple", "hjdshfkj fdskjksl",R.drawable.siddheshwar_mahadev_mandir));
-        temples.add(new Location("Ganesh Temple", "hjdshfkj fdskjksl",R.drawable.shri_ganesh_temple));
-        temples.add(new Location("Baba Ramdev Temple", "hjdshfkj fdskjksl",R.drawable.baba_ramdev_temple));
+        String locationDescription = getResources().getString(R.string.location_description);
+        temples.add(new Location("Raj Ranchhodji Temple", locationDescription, R.drawable.raj_ranchhodji_temple));
+        temples.add(new Location("Rasik Bihari Temple", locationDescription, R.drawable.rasik_bihari_temple));
+        temples.add(new Location("Chamunda Mata Temple", locationDescription, R.drawable.chamunda_maa_temple));
+        temples.add(new Location("Kunj Bihari Temple", locationDescription, R.drawable.kunj_bihari_temple));
+        temples.add(new Location("Siddheshwar Mahadev Temple", locationDescription, R.drawable.siddheshwar_mahadev_mandir));
+        temples.add(new Location("Ganesh Temple", locationDescription, R.drawable.shri_ganesh_temple));
+        temples.add(new Location("Baba Ramdev Temple", locationDescription, R.drawable.baba_ramdev_temple));
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
-        mAdapter = new RecyclerViewAdapter(temples);
+        mAdapter = new RecyclerViewAdapter(temples, getActivity());
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setHasFixedSize(true);

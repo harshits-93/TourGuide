@@ -31,20 +31,20 @@ public class Top_Attraction_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.location_list, container, false);
 
-
+        String locationDescription = getResources().getString(R.string.location_description);
         final ArrayList<Location> locations = new ArrayList<>();
-        locations.add(new Location("Mehrangarh Fort", "hjdshfkj fdskjksl",R.drawable.mehrangarh));
-        locations.add(new Location("Umaid Bhawan Palace", "hjdshfkj fdskjksl",R.drawable.umaid_palace));
-        locations.add(new Location("Jaswant thade","hjdshfkj fdskjksl", R.drawable.jaswant_thada));
-        locations.add(new Location("Balsamand","hjdshfkj fdskjksl", R.drawable.balsamand_lake));
-        locations.add(new Location("Kaylana Lake", "hjdshfkj fdskjksl",R.drawable.kaylana));
-        locations.add(new Location("Ranisar Lake","hjdshfkj fdskjksl", R.drawable.ranisar));
-        locations.add(new Location("Ghanta ghar","hjdshfkj fdskjksl", R.drawable.ghanta_ghar));
-        locations.add(new Location("Machia biological park", "hjdshfkj fdskjksl",R.drawable.machia_park));
-        locations.add(new Location("Mandore Garden","hjdshfkj fdskjksl", R.drawable.mandore_garden));
+        locations.add(new Location("Mehrangarh Fort", locationDescription, R.drawable.mehrangarh));
+        locations.add(new Location("Umaid Bhawan Palace", locationDescription, R.drawable.umaid_palace));
+        locations.add(new Location("Jaswant thade", locationDescription, R.drawable.jaswant_thada));
+        locations.add(new Location("Balsamand", locationDescription, R.drawable.balsamand_lake));
+        locations.add(new Location("Kaylana Lake", locationDescription, R.drawable.kaylana));
+        locations.add(new Location("Ranisar Lake", locationDescription, R.drawable.ranisar));
+        locations.add(new Location("Ghanta ghar", locationDescription, R.drawable.ghanta_ghar));
+        locations.add(new Location("Machia biological park", locationDescription, R.drawable.machia_park));
+        locations.add(new Location("Mandore Garden", locationDescription, R.drawable.mandore_garden));
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
-        mAdapter = new RecyclerViewAdapter(locations);
+        mAdapter = new RecyclerViewAdapter(locations, getActivity());
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setHasFixedSize(true);

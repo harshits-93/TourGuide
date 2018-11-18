@@ -19,7 +19,14 @@
         <activity android:name=".TopAttractionActivity" />
         <activity android:name=".RestaurantsActivity" />
         <activity android:name=".HotelsActivity" />
-        <activity android:name=".TemplesActivity"></activity>
+        <activity android:name=".TemplesActivity" />
+        <activity
+            android:name=".DetailsActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
     </application>
 
 </manifest>

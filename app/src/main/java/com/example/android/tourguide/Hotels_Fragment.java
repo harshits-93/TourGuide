@@ -33,16 +33,17 @@ public class Hotels_Fragment extends Fragment {
 
 
         final ArrayList<Location> hotels = new ArrayList<>();
-        hotels.add(new Location("Umaid Bhawan","hjdshfkj fdskjksl", R.drawable.umaid_bhawan));
-        hotels.add(new Location("Amargarh Resort","hjdshfkj fdskjksl", R.drawable.amargarh_resort));
-        hotels.add(new Location("Lariya Resort", "hjdshfkj fdskjksl",R.drawable.lariya_resort));
-        hotels.add(new Location("Lords Inn", "hjdshfkj fdskjksl",R.drawable.lords_inn));
-        hotels.add(new Location("Pratap Niwas", "hjdshfkj fdskjksl",R.drawable.pratap_niwas));
-        hotels.add(new Location("Kalinga","hjdshfkj fdskjksl", R.drawable.kalinga));
-        hotels.add(new Location("Marvel Umed Hotel","hjdshfkj fdskjksl", R.drawable.marvel_umed_hotel));
+        String locationDescription = getResources().getString(R.string.location_description);
+        hotels.add(new Location("Umaid Bhawan", locationDescription, R.drawable.umaid_bhawan));
+        hotels.add(new Location("Amargarh Resort", locationDescription, R.drawable.amargarh_resort));
+        hotels.add(new Location("Lariya Resort", locationDescription, R.drawable.lariya_resort));
+        hotels.add(new Location("Lords Inn", locationDescription, R.drawable.lords_inn));
+        hotels.add(new Location("Pratap Niwas", locationDescription, R.drawable.pratap_niwas));
+        hotels.add(new Location("Kalinga", locationDescription, R.drawable.kalinga));
+        hotels.add(new Location("Marvel Umed Hotel", locationDescription, R.drawable.marvel_umed_hotel));
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
-        mAdapter = new RecyclerViewAdapter(hotels);
+        mAdapter = new RecyclerViewAdapter(hotels, getActivity());
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setHasFixedSize(true);

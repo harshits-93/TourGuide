@@ -1,7 +1,7 @@
 package com.example.android.tourguide;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 public class HotelsActivity extends AppCompatActivity {
 
@@ -9,9 +9,20 @@ public class HotelsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, new Hotels_Fragment())
-                .commit();
+
+        //Checking if the fragment container is null or not
+        if (findViewById(R.id.container) != null) {
+            /*Here checking if activity is resumed
+             or created for the first time to avoid
+             overlapping of fragments*/
+            if (savedInstanceState != null) {
+                return;
+            }
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container, new Hotels_Fragment())
+                    .commit();
+
+        }
 
     }
 }
