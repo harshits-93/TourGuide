@@ -8,15 +8,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.LocationViewHolder> {
     private static String LOG_TAG = RecyclerViewAdapter.class.getName();
+
     ArrayList<Location> mArrayList;
     Context context;
 
@@ -27,7 +28,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public LocationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //Inflating
+
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
         LocationViewHolder locationViewHolder = new LocationViewHolder(view, mArrayList, context);
         Log.d(LOG_TAG, "In onCreateViewHolder");
@@ -53,7 +54,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public static class LocationViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView locationImage;
         TextView locationTextView, locationDescription;
-        ImageButton favButton;
+        ToggleButton favButton;
         ArrayList<Location> locationsList = new ArrayList<>();
         Context context;
 
@@ -70,17 +71,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             locationTextView = (TextView) view.findViewById(R.id.locationName);
             locationImage = (ImageView) view.findViewById(R.id.imageView);
             locationDescription = (TextView) view.findViewById(R.id.locationDescription);
-            favButton = (ImageButton) view.findViewById(R.id.favButton);
+            favButton = (ToggleButton) view.findViewById(R.id.favButton);
 
             favButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Changing icon color to red on click
-                    favButton.setColorFilter(v.getContext().getResources().getColor(R.color.red));
-                    Toast.makeText(context, "Added to favourite", Toast.LENGTH_SHORT).show();
+                    //Checking the state of toggle button i.e favButton
+                    boolean pressedState = ((ToggleButton) v).isChecked();
+
+                    if (pressedState == true) {
+                        Toast.makeText(context, "Added to favourite", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(context, "Removed from favourite", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
-
         }
 
         @Override
