@@ -4,7 +4,6 @@ package com.example.android.tourguide;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,32 +21,34 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     Context context;
 
     public RecyclerViewAdapter(ArrayList<Location> arrayList, Context context) {
+        //Initialization
         this.context = context;
         mArrayList = arrayList;
     }
 
     @Override
     public LocationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
+        //inflating the list item layout and creating Viewholder
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
         LocationViewHolder locationViewHolder = new LocationViewHolder(view, mArrayList, context);
-        Log.d(LOG_TAG, "In onCreateViewHolder");
         return locationViewHolder;
     }
 
     @Override
     public void onBindViewHolder(LocationViewHolder holder, int position) {
+        //Getting the index of location object in arraylist using clicked position
         Location location = mArrayList.get(position);
+
+        //Setting location Text,image etc to associated viewholder
         holder.locationTextView.setText(location.getMlocationName());
         holder.locationImage.setImageResource(location.getmImageResourceId());
         holder.locationDescription.setText(location.getMlocationDescription());
 
-
-        Log.d(LOG_TAG, "In onBindViewHolder");
     }
 
     @Override
     public int getItemCount() {
+        //returning the no. of items in arraylist
         return mArrayList.size();
     }
 
@@ -55,7 +56,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ImageView locationImage;
         TextView locationTextView, locationDescription;
         ToggleButton favButton;
-        ArrayList<Location> locationsList = new ArrayList<>();
+        ArrayList<Location> locationsList;
         Context context;
 
         public LocationViewHolder(View view, ArrayList<Location> locations, final Context context) {
@@ -64,7 +65,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             locationsList = locations;
             this.context = context;
 
-            //Setting Click Listener on each Card View i.e Viewholder
+            //Setting Click Listener on Card View i.e Viewholder
             view.setOnClickListener(this);
 
             //Setting References
@@ -73,6 +74,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             locationDescription = (TextView) view.findViewById(R.id.locationDescription);
             favButton = (ToggleButton) view.findViewById(R.id.favButton);
 
+            //Setting Click Listener on favourite icon button
             favButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

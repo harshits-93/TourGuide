@@ -32,6 +32,8 @@ public class Top_Attraction_Fragment extends Fragment {
         View rootView = inflater.inflate(R.layout.location_list, container, false);
 
         String locationDescription = getResources().getString(R.string.location_description);
+
+        //Creating an arraylist for locations
         final ArrayList<Location> locations = new ArrayList<>();
         locations.add(new Location("Mehrangarh Fort", locationDescription, R.drawable.mehrangarh));
         locations.add(new Location("Umaid Bhawan Palace", locationDescription, R.drawable.umaid_palace));
@@ -43,13 +45,20 @@ public class Top_Attraction_Fragment extends Fragment {
         locations.add(new Location("Machia biological park", locationDescription, R.drawable.machia_park));
         locations.add(new Location("Mandore Garden", locationDescription, R.drawable.mandore_garden));
 
+        //getting the reference of recyclerView
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
+
+        //Instantiating Adapter and LayoutManager
         mAdapter = new RecyclerViewAdapter(locations, getActivity());
         mLayoutManager = new LinearLayoutManager(getActivity());
+
+        //Attaching LayoutManager with RecyclerView
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setHasFixedSize(true);
 
+        //Setting adapter with RecyclerView
         mRecyclerView.setAdapter(mAdapter);
+
         return rootView;
     }
 

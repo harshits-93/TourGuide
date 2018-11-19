@@ -74,20 +74,16 @@
                 android:layout_height="wrap_content"
                 tools:text="jfdhsjkhgjkhsghg gj" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/md_keylines"
-                android:layout_marginTop="@dimen/md_keylines"
-                android:text="Location"
-                android:textColor="?attr/colorAccent"
-                android:textSize="@dimen/article_titles" />
-
             <Button
                 android:id="@+id/btn_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="get location" />
+                android:layout_marginBottom="@dimen/md_keylines"
+                android:layout_marginTop="@dimen/md_keylines"
+                android:backgroundTint="@color/colorAccent"
+                android:text="Get location"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Widget.Button"
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
